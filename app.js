@@ -12,19 +12,19 @@ wasClicked.addEventListener('click', clickHandler);
 // event handler: generate three images to table
 function clickHandler(event) {
   event.preventDefault();
-  // generateRandom();
+  generateRandom();
 
-  var imgOne = document.createElement('img');
-  imgOne.setAttribute('src', 'img/bag.jpg');
-  tdOne.appendChild(imgOne);
+  // var imgOne = document.createElement('img');
+  // imgOne.setAttribute('src', 'img/bag.jpg');
+  // tdOne.appendChild(imgOne);
 
-  var imgTwo = document.createElement('img');
-  imgTwo.setAttribute('src', 'img/banana.jpg');
-  tdTwo.appendChild(imgTwo);
+  // var imgTwo = document.createElement('img');
+  // imgTwo.setAttribute('src', 'img/banana.jpg');
+  // tdTwo.appendChild(imgTwo);
 
-  var imgThree = document.createElement('img');
-  imgThree.setAttribute('src', 'img/bathroom.jpg');
-  tdThree.appendChild(imgThree);
+  // var imgThree = document.createElement('img');
+  // imgThree.setAttribute('src', 'img/bathroom.jpg');
+  // tdThree.appendChild(imgThree);
 }
 
 // create constructor for image objects
@@ -96,22 +96,28 @@ allImages.push(waterCan);
 var wineGlass = new BusMallImg('Wine Glass', 'img/wine-glass.jpg', 19);
 allImages.push(wineGlass);
 
-// // write random generate function, pulling imgNum id per objects
-// function generateRandom() {
+// write random generate function, pulling imgNum id per objects
+function generateRandom() {
 
-//   // generate three random numbers
-//   var rand1 = Math.floor(Math.random() * (19 - 1 + 1) + 1);
-//   var rand2 = Math.floor(Math.random() * (19 - 1 + 1) + 1);
-//   var rand3 = Math.floor(Math.random() * (19 - 1 + 1) + 1);
+  // generate three random numbers
+  var imgNumArray = [];
+  for (var i = 1; i <= 19; i++) {
+    imgNumArray.push(i);
+  }
 
-//   // pull the three images with the same imgNum ids as the random numbers
-//   // run for loop for allImages.length
-//   // run if/else for allImages.imgNum
-//   for (var i = 0; i < allImages.length; i++) {
-//     if (rand1 === this.imgNum) {
-//       var imgOne = document.createElement('img');
-//       imgOne.setAttribute('src', this.filepath);
-//       tdOne.appendChild(imgOne);
-//     }
-//   }
-// }
+  var randomArray = [];
+  for (i = 0; i < 3; i++) {
+
+    var max = imgNumArray.length - 1;
+    var min = 0;
+
+    var randIndex = Math.random() * ((max - min) + 1) + min;
+
+    var rand = imgNumArray.splice(randIndex, 1);
+    randomArray.push(rand);
+  }
+
+  console.log(randomArray);
+
+};
+
