@@ -1,0 +1,134 @@
+'use strict';
+
+var allImages = [];
+
+// event listener
+var wasClicked = document.getElementById('shop');
+var tdOne = document.getElementById('image-one');
+var tdTwo = document.getElementById('image-two');
+var tdThree = document.getElementById('image-three');
+wasClicked.addEventListener('click', clickHandler);
+
+// event handler: generate three images to table
+function clickHandler(event) {
+  event.preventDefault();
+  // clear table contents
+  tdOne.textContent = '';
+  tdTwo.textContent = '';
+  tdThree.textContent = '';
+
+  // generate new photos
+  generateRandom();
+}
+
+// create constructor for image objects
+function BusMallImg(name, filepath, imgNum) {
+  this.name = name;
+  this.filepath = filepath;
+  this.imgNum = imgNum;
+  this.timesShown = 0;
+  this.timesClicked = 0;
+  this.percentClicked = 0;
+};
+
+
+// create objects for all 19 images
+var bag = new BusMallImg('Bag', 'img/bag.jpg', 1);
+allImages.push(bag);
+
+var banana = new BusMallImg('Banana', 'img/banana.jpg', 2);
+allImages.push(banana);
+
+var bathroom = new BusMallImg('Bathroom', 'img/bathroom.jpg', 3);
+allImages.push(bathroom);
+
+var boots = new BusMallImg('Boots', 'img/boots.jpg', 4);
+allImages.push(boots);
+
+var breakfast = new BusMallImg('Breakfast', 'img/breakfast.jpg', 5);
+allImages.push(breakfast);
+
+var bubblegum = new BusMallImg('Bubble Gum', 'img/bubblegum.jpg', 6);
+allImages.push(bubblegum);
+
+var chair = new BusMallImg('Chair', 'img/chair.jpg', 7);
+allImages.push(chair);
+
+var cthulhu = new BusMallImg('Cthulhu', 'img/cthulhu.jpg', 8);
+allImages.push(cthulhu);
+
+var dogDuck = new BusMallImg('Dog-Duck', 'img/dog-duck.jpg', 9);
+allImages.push(dogDuck);
+
+var dragon = new BusMallImg('Dragon', 'img/dragon.jpg', 10);
+allImages.push(dragon);
+
+var pen = new BusMallImg('Pen', 'img/pen.jpg', 11);
+allImages.push(pen);
+
+var petSweep = new BusMallImg('Pet Sweep', 'img/pet-sweep.jpg', 12);
+allImages.push(petSweep);
+
+var scissors = new BusMallImg('Scissors', 'img/scissors.jpg', 13);
+allImages.push(scissors);
+
+var shark = new BusMallImg('Shark', 'img/shark.jpg', 14);
+allImages.push(shark);
+
+var tauntaun = new BusMallImg('Tauntaun', 'img/tauntaun.jpg', 15);
+allImages.push(tauntaun);
+
+var unicorn = new BusMallImg('Unicorn', 'img/unicorn.jpg', 16);
+allImages.push(unicorn);
+
+var usb = new BusMallImg('USB', 'img/usb.gif', 17);
+allImages.push(usb);
+
+var waterCan = new BusMallImg('Water Can', 'img/water-can.jpg', 18);
+allImages.push(waterCan);
+
+var wineGlass = new BusMallImg('Wine Glass', 'img/wine-glass.jpg', 19);
+allImages.push(wineGlass);
+
+// write random generate function, pulling imgNum id per objects
+// Amy helped me with this
+function generateRandom() {
+
+  // generate three random numbers
+  var imgNumArray = [];
+  for (var i = 1; i <= 19; i++) {
+    imgNumArray.push(i);
+  }
+
+  var randArray = [];
+  for (i = 0; i < 3; i++) {
+    var max = imgNumArray.length - 1;
+    var min = 0;
+    var randIndex = Math.random() * ((max - min) + 1) + min;
+    var rand = imgNumArray.splice(randIndex, 1);
+    randArray.push(rand);
+  }
+  console.log(randArray);
+
+  // print three images at random
+  for (i = 0; i < allImages.length; i++) {
+    if (randArray[0] == allImages[i].imgNum) {
+      var imgOne = document.createElement('img');
+      imgOne.setAttribute('src', allImages[i].filepath);
+      tdOne.appendChild(imgOne);
+    };
+    if (randArray[1] == allImages[i].imgNum) {
+      var imgTwo = document.createElement('img');
+      imgTwo.setAttribute('src', allImages[i].filepath);
+      tdTwo.appendChild(imgTwo);
+    };
+    if (randArray[2] == allImages[i].imgNum) {
+      var imgThree = document.createElement('img');
+      imgThree.setAttribute('src', allImages[i].filepath);
+      tdThree.appendChild(imgThree);
+    }
+
+  }
+
+};
+
