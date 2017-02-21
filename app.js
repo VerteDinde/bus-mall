@@ -22,10 +22,11 @@ function clickHandler(event) {
   tdThree.textContent = '';
 
   // generate new photos
+  var clickedImage = event.target.getAttribute('src');
+  console.log('Just Clicked:', clickedImage);
   generateRandom();
-  console.log(event.target);
   for (var i = 0; i < allImages.length; i++) {
-    if (allImages[i].filepath == event.target.getAttribute('src')) {
+    if (allImages[i].filepath == clickedImage) {
       allImages[i].timesClicked++;
       console.log('Times Clicked: ', allImages[i].timesClicked);
     }
@@ -44,47 +45,51 @@ function BusMallImg(name, filepath, imgNum) {
 
 
 // create objects for all 19 images
-var bag = new BusMallImg('Bag', 'img/bag.jpg', 1);
+// can I make a loop for this?
+var bag = new BusMallImg('Bag', 'img/bag.jpg', 0);
 allImages.push(bag);
 
-var banana = new BusMallImg('Banana', 'img/banana.jpg', 2);
+var banana = new BusMallImg('Banana', 'img/banana.jpg', 1);
 allImages.push(banana);
 
-var bathroom = new BusMallImg('Bathroom', 'img/bathroom.jpg', 3);
+var bathroom = new BusMallImg('Bathroom', 'img/bathroom.jpg', 2);
 allImages.push(bathroom);
 
-var boots = new BusMallImg('Boots', 'img/boots.jpg', 4);
+var boots = new BusMallImg('Boots', 'img/boots.jpg', 3);
 allImages.push(boots);
 
-var breakfast = new BusMallImg('Breakfast', 'img/breakfast.jpg', 5);
+var breakfast = new BusMallImg('Breakfast', 'img/breakfast.jpg', 4);
 allImages.push(breakfast);
 
-var bubblegum = new BusMallImg('Bubble Gum', 'img/bubblegum.jpg', 6);
+var bubblegum = new BusMallImg('Bubble Gum', 'img/bubblegum.jpg', 5);
 allImages.push(bubblegum);
 
-var chair = new BusMallImg('Chair', 'img/chair.jpg', 7);
+var chair = new BusMallImg('Chair', 'img/chair.jpg', 6);
 allImages.push(chair);
 
-var cthulhu = new BusMallImg('Cthulhu', 'img/cthulhu.jpg', 8);
+var cthulhu = new BusMallImg('Cthulhu', 'img/cthulhu.jpg', 7);
 allImages.push(cthulhu);
 
-var dogDuck = new BusMallImg('Dog-Duck', 'img/dog-duck.jpg', 9);
+var dogDuck = new BusMallImg('Dog-Duck', 'img/dog-duck.jpg', 8);
 allImages.push(dogDuck);
 
-var dragon = new BusMallImg('Dragon', 'img/dragon.jpg', 10);
+var dragon = new BusMallImg('Dragon', 'img/dragon.jpg', 9);
 allImages.push(dragon);
 
-var pen = new BusMallImg('Pen', 'img/pen.jpg', 11);
+var pen = new BusMallImg('Pen', 'img/pen.jpg', 10);
 allImages.push(pen);
 
-var petSweep = new BusMallImg('Pet Sweep', 'img/pet-sweep.jpg', 12);
+var petSweep = new BusMallImg('Pet Sweep', 'img/pet-sweep.jpg', 11);
 allImages.push(petSweep);
 
-var scissors = new BusMallImg('Scissors', 'img/scissors.jpg', 13);
+var scissors = new BusMallImg('Scissors', 'img/scissors.jpg', 12);
 allImages.push(scissors);
 
-var shark = new BusMallImg('Shark', 'img/shark.jpg', 14);
+var shark = new BusMallImg('Shark', 'img/shark.jpg', 13);
 allImages.push(shark);
+
+var sweep = new BusMallImg('Sweep', 'img/sweep.png', 14);
+allImages.push(sweep);
 
 var tauntaun = new BusMallImg('Tauntaun', 'img/tauntaun.jpg', 15);
 allImages.push(tauntaun);
@@ -107,21 +112,19 @@ function generateRandom() {
 
   // generate three random numbers
   var imgNumArray = [];
-  for (var i = 1; i <= 19; i++) {
-    imgNumArray.push(i);
+  for (var i = 0; i < allImages.length; i++) {
+    if (i !== previousRandArray[0] && i !== previousRandArray[1] && i !== previousRandArray[2]) {
+      imgNumArray.push(i);
+    }
   }
 
   var randArray = [];
   for (i = 0; i < 3; i++) {
-    var max = imgNumArray.length - 1;
-    var min = 0;
-    var randIndex = Math.random() * ((max - min) + 1) + min;
-    imgNumArray.splice(previousRandArray, 3);   // this might not work
-    var rand = imgNumArray.splice(randIndex, 1);
+    var randIndex = Math.random() * imgNumArray.length;
+    var rand = imgNumArray.splice(randIndex, 1)[0];    // splice returns an array, hence [0]
     randArray.push(rand);
   }
-  previousRandArray = randArray;        // this might not work
-  console.log('Previous Array: ', previousRandArray);
+  previousRandArray = randArray;
 
   // print three images at random
   for (i = 0; i < allImages.length; i++) {
@@ -143,4 +146,48 @@ function generateRandom() {
   }
 };
 
+// run generate random initially
 generateRandom();
+
+// Chart.js
+function createChart() {
+  var ctx = document.getElementById('my-chart');
+  var myChart = new Chart(ctx, {  //eslint-disable-line
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
+
+createChart();
