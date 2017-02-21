@@ -12,19 +12,13 @@ wasClicked.addEventListener('click', clickHandler);
 // event handler: generate three images to table
 function clickHandler(event) {
   event.preventDefault();
+  // clear table contents
+  tdOne.textContent = '';
+  tdTwo.textContent = '';
+  tdThree.textContent = '';
+
+  // generate new photos
   generateRandom();
-
-  // var imgOne = document.createElement('img');
-  // imgOne.setAttribute('src', 'img/bag.jpg');
-  // tdOne.appendChild(imgOne);
-
-  // var imgTwo = document.createElement('img');
-  // imgTwo.setAttribute('src', 'img/banana.jpg');
-  // tdTwo.appendChild(imgTwo);
-
-  // var imgThree = document.createElement('img');
-  // imgThree.setAttribute('src', 'img/bathroom.jpg');
-  // tdThree.appendChild(imgThree);
 }
 
 // create constructor for image objects
@@ -87,7 +81,7 @@ allImages.push(tauntaun);
 var unicorn = new BusMallImg('Unicorn', 'img/unicorn.jpg', 16);
 allImages.push(unicorn);
 
-var usb = new BusMallImg('USB', 'img/usb.jpg', 17);
+var usb = new BusMallImg('USB', 'img/usb.gif', 17);
 allImages.push(usb);
 
 var waterCan = new BusMallImg('Water Can', 'img/water-can.jpg', 18);
@@ -97,6 +91,7 @@ var wineGlass = new BusMallImg('Wine Glass', 'img/wine-glass.jpg', 19);
 allImages.push(wineGlass);
 
 // write random generate function, pulling imgNum id per objects
+// Amy helped me with this
 function generateRandom() {
 
   // generate three random numbers
@@ -105,19 +100,35 @@ function generateRandom() {
     imgNumArray.push(i);
   }
 
-  var randomArray = [];
+  var randArray = [];
   for (i = 0; i < 3; i++) {
-
     var max = imgNumArray.length - 1;
     var min = 0;
-
     var randIndex = Math.random() * ((max - min) + 1) + min;
-
     var rand = imgNumArray.splice(randIndex, 1);
-    randomArray.push(rand);
+    randArray.push(rand);
   }
+  console.log(randArray);
 
-  console.log(randomArray);
+  // print three images at random
+  for (i = 0; i < allImages.length; i++) {
+    if (randArray[0] == allImages[i].imgNum) {
+      var imgOne = document.createElement('img');
+      imgOne.setAttribute('src', allImages[i].filepath);
+      tdOne.appendChild(imgOne);
+    };
+    if (randArray[1] == allImages[i].imgNum) {
+      var imgTwo = document.createElement('img');
+      imgTwo.setAttribute('src', allImages[i].filepath);
+      tdTwo.appendChild(imgTwo);
+    };
+    if (randArray[2] == allImages[i].imgNum) {
+      var imgThree = document.createElement('img');
+      imgThree.setAttribute('src', allImages[i].filepath);
+      tdThree.appendChild(imgThree);
+    }
+
+  }
 
 };
 
