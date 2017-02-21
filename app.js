@@ -1,13 +1,17 @@
 'use strict';
 
 var allImages = [];
+var previousRandArray = [];
 
-// event listener
-var wasClicked = document.getElementById('shop');
+// event listeners per table cell
 var tdOne = document.getElementById('image-one');
+tdOne.addEventListener('click', clickHandler);
+
 var tdTwo = document.getElementById('image-two');
+tdTwo.addEventListener('click', clickHandler);
+
 var tdThree = document.getElementById('image-three');
-wasClicked.addEventListener('click', clickHandler);
+tdThree.addEventListener('click', clickHandler);
 
 // event handler: generate three images to table
 function clickHandler(event) {
@@ -19,7 +23,14 @@ function clickHandler(event) {
 
   // generate new photos
   generateRandom();
-}
+  console.log(event.target);
+  for (var i = 0; i < allImages.length; i++) {
+    if (allImages[i].filepath == event.target.getAttribute('src')) {
+      allImages[i].timesClicked++;
+      console.log('Times Clicked: ', allImages[i].timesClicked);
+    }
+  }
+};
 
 // create constructor for image objects
 function BusMallImg(name, filepath, imgNum) {
@@ -105,30 +116,31 @@ function generateRandom() {
     var max = imgNumArray.length - 1;
     var min = 0;
     var randIndex = Math.random() * ((max - min) + 1) + min;
+    imgNumArray.splice(previousRandArray, 3);   // this might not work
     var rand = imgNumArray.splice(randIndex, 1);
     randArray.push(rand);
   }
-  console.log(randArray);
+  previousRandArray = randArray;        // this might not work
+  console.log('Previous Array: ', previousRandArray);
 
   // print three images at random
   for (i = 0; i < allImages.length; i++) {
     if (randArray[0] == allImages[i].imgNum) {
-      var imgOne = document.createElement('img');
-      imgOne.setAttribute('src', allImages[i].filepath);
-      tdOne.appendChild(imgOne);
+      tdOne.setAttribute('src', allImages[i].filepath);
+      allImages[i].timesShown++;
+      console.log('Time Shown: ', allImages[i].timesShown);
     };
     if (randArray[1] == allImages[i].imgNum) {
-      var imgTwo = document.createElement('img');
-      imgTwo.setAttribute('src', allImages[i].filepath);
-      tdTwo.appendChild(imgTwo);
+      tdTwo.setAttribute('src', allImages[i].filepath);
+      allImages[i].timesShown++;
+      console.log('Time Shown: ', allImages[i].timesShown);
     };
     if (randArray[2] == allImages[i].imgNum) {
-      var imgThree = document.createElement('img');
-      imgThree.setAttribute('src', allImages[i].filepath);
-      tdThree.appendChild(imgThree);
+      tdThree.setAttribute('src', allImages[i].filepath);
+      allImages[i].timesShown++;
+      console.log('Time Shown: ', allImages[i].timesShown);
     }
-
   }
-
 };
 
+generateRandom();
