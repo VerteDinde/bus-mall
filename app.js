@@ -44,10 +44,14 @@ function clickHandler(event) {
         console.log('Times Clicked: ', allImages[i].timesClicked);
       }
     }
+    clickPercentage();
     generateData();
-    createChart();
   } else {
+    createChart();
     alert('You have guessed 25 times.');
+    // pushing data to local storage
+    storeData();
+    retrieveData();
   }
 }
 
@@ -115,7 +119,25 @@ function generateRandom() {
     }
   }
 };
+// calculates percentage clicked for every image object
+function clickPercentage() {
+  for (var i = 0; i < allImages.length; i++) {
+    var clickPercent = (allImages[i].timesClicked / allImages[i].timesShown) * 100;
+    allImages[i].percentClicked = clickPercent;
+  }
+}
 
+// Both functions below store and retrieve data to the local storage
+function storeData() {
+  var storeImagesJSON = JSON.stringify(allImages);
+  localStorage.setItem('storeImages', storeImagesJSON);
+}
+
+function retrieveData() {
+  var retrievedImages = localStorage.getItem('storeImages');
+  allImages = JSON.parse(retrievedImages);
+  console.log(allImages);
+}
 // run all functions initially
 createAllImages();
 generateData();
@@ -179,12 +201,10 @@ function createChart() {
         yAxes: [{
           ticks: {
             beginAtZero: true,
-            stepSize: 5
+            stepSize: 1
           }
         }]
       }
     }
   });
 }
-
-createChart();
