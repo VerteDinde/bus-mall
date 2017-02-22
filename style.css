@@ -1,4 +1,10 @@
 /*-------------------------------
+Fonts
+--------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Lato|Oswald|PT+Sans|Titan+One');
+
+/*-------------------------------
 Header
 --------------------------------*/
 body {
@@ -38,6 +44,15 @@ header li {
 Images
 --------------------------------*/
 
+h1 {
+    font-family: 'Titan One';
+    font-size: 45px;
+}
+
+p {
+    font-family: "PT Sans";
+}
+
 main {
     width: 100%;
     margin: 0 auto;
@@ -55,6 +70,14 @@ img {
 }
 
 .chart-div {
-    background-color: #dbe5dd;
+    background-color: #eaeaf0;
     background-image: none;
+    width: 900px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.my-chart {
+    max-width: 100%;
+
 }

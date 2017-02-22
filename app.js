@@ -12,6 +12,7 @@ var allImages = [];
 var previousRandArray = [];
 var allNames = [];
 var allClicks = [];
+var turns = 0;
 
 // event listeners per table cell
 var tdOne = document.getElementById('image-one');
@@ -25,25 +26,30 @@ tdThree.addEventListener('click', clickHandler);
 
 // event handler: generate three images to table
 function clickHandler(event) {
-  //event.preventDefault();
-  // clear table contents
-  tdOne.textContent = '';
-  tdTwo.textContent = '';
-  tdThree.textContent = '';
+  if (turns < 25) {
+    //event.preventDefault();
+    // clear table contents
+    turns++;
+    tdOne.textContent = '';
+    tdTwo.textContent = '';
+    tdThree.textContent = '';
 
-  // generate new photos
-  var clickedImage = event.target.getAttribute('src');
-  console.log('Just Clicked:', clickedImage);
-  generateRandom();
-  generateData();
-  for (var i = 0; i < allImages.length; i++) {
-    if (allImages[i].filepath == clickedImage) {
-      allImages[i].timesClicked++;
-      console.log('Times Clicked: ', allImages[i].timesClicked);
+    // generate new photos
+    var clickedImage = event.target.getAttribute('src');
+    console.log('Just Clicked:', clickedImage);
+    generateRandom();
+    for (var i = 0; i < allImages.length; i++) {
+      if (allImages[i].filepath == clickedImage) {
+        allImages[i].timesClicked++;
+        console.log('Times Clicked: ', allImages[i].timesClicked);
+      }
     }
+    generateData();
+    createChart();
+  } else {
+    alert('You have guessed 25 times.');
   }
-  createChart();
-};
+}
 
 // create constructor for image objects
 function BusImg(path, i) {
@@ -172,7 +178,8 @@ function createChart() {
       scales: {
         yAxes: [{
           ticks: {
-            beginAtZero: true
+            beginAtZero: true,
+            stepSize: 5
           }
         }]
       }
