@@ -140,6 +140,7 @@ function retrieveData() {
 }
 // run all functions initially
 createAllImages();
+retrieveData(); //when do we run this when localStorage is empty??
 generateData();
 generateRandom();
 
