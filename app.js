@@ -140,8 +140,10 @@ function retrieveData() {
 }
 // run all functions initially
 createAllImages();
-retrieveData(); //when do we run this when localStorage is empty??
 generateData();
+if (localStorage.length !== 0) {  //prevents pushing an empty array into allImages on the initial session
+  retrieveData();
+}
 generateRandom();
 
 // Chart.js
