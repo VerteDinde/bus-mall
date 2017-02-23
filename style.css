@@ -3,6 +3,7 @@ Fonts
 --------------------------------*/
 
 @import url('https://fonts.googleapis.com/css?family=Lato|Oswald|PT+Sans|Titan+One');
+@import url('https://fonts.googleapis.com/css?family=Cardo|Pathway+Gothic+One|Sonsie+One');
 
 /*-------------------------------
 Header
@@ -32,6 +33,7 @@ nav li {
     display: inline-block;
     color: white;
     padding: 10px;
+    font-size: 20px;
 }
 
 nav:after {
@@ -54,7 +56,7 @@ header ul img {
 
 header li {
     display: inline-block;
-    font-family: 'Oswald';
+    font-family: 'Pathway Gothic One';
 }
 
 .line-break { 
@@ -71,14 +73,16 @@ Images
 --------------------------------*/
 
 h1 {
-    font-family: 'Oswald';
-    font-size: 45px;
+    font-family: 'Pathway Gothic One';
+    font-size: 60px;
     color: white;
     margin: 20px 20px;
+    line-height: 140%;
 }
 
 p {
-    font-family: "Lato";
+    font-family: "Cardo";
+    font-size: 20px;
     margin: 20px 20px;
     line-height: 140%;
     color: white;
@@ -88,12 +92,12 @@ a:link {
     color: white;
 }
 
-a:hover {
-    color: darkgray;
-}
-
 a:visited {
     color: white;
+}
+
+a:hover {
+    color: darkgray;
 }
 
 main {
@@ -102,15 +106,51 @@ main {
     text-align: center;
 }
 
-main table {
+/*-------------------------------
+Tables
+--------------------------------*/
+
+table#shop {
     margin: 0 auto;
     border-spacing: 20px;
+    padding: 20px 20px;
 }
+
+table#market-results {
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+#market-results th {
+    padding: 15px 15px;
+    border-bottom: 1px solid black;
+    font-family: 'Pathway Gothic One';
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#market-results td {
+    padding: 5px 10px;
+    font-family: 'Cardo';
+}
+
+#market-results img {
+    width: 20px;
+    height: 20px;
+}
+
+/*-------------------------------
+Images
+--------------------------------*/
 
 img {
     width: 250px;
     height: 250px;
 }
+
+/*-------------------------------
+Chart
+--------------------------------*/
 
 .chart-div {
     width: 900px;
