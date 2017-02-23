@@ -46,13 +46,18 @@ nav:after {
      height: 0;
 }
 
+header.div {
+    margin: 0 auto;
+}
+
 .shop-now {
     border: 1px solid white;
     font-family: "Pathway Gothic One";
     color: white;
-    margin: 10px 600px;
+    margin: 10px 45%;
     padding: 10px 10px;
     margin-bottom: 50px;
+    min-width: 100px;
 }
 
 .shop-now a {
