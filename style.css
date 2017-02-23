@@ -33,6 +33,7 @@ nav li {
     display: inline-block;
     color: white;
     padding: 10px;
+    font-family: 'Pathway Gothic One';
     font-size: 20px;
 }
 
@@ -45,21 +46,21 @@ nav:after {
      height: 0;
 }
 
-header ul {
-    margin: 20px auto;
+.shop-now {
+    border: 1px solid white;
+    font-family: "Pathway Gothic One";
+    color: white;
+    margin: 10px 600px;
+    padding: 10px 10px;
+    margin-bottom: 50px;
 }
 
-header ul img {
-    width: 24px;
-    height: 24px;
+.shop-now a {
+    text-decoration: none;
 }
 
-header li {
-    display: inline-block;
-    font-family: 'Pathway Gothic One';
-}
-
-.line-break { 
+/*this is from a CodePen about line styles*/
+.line-break {       
   border: 0; 
   height: 1px; 
   background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
@@ -83,7 +84,7 @@ h1 {
 p {
     font-family: "Cardo";
     font-size: 20px;
-    margin: 20px 20px;
+    margin: 20px 40px;
     line-height: 140%;
     color: white;
 }
@@ -161,4 +162,34 @@ Chart
 .my-chart {
     max-width: 100%;
 
+}
+
+/*-------------------------------
+Chart
+--------------------------------*/
+
+footer {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+footer p {
+    color: grey;
+    font-family: 'Pathway Gothic One';
+    font-size: 12px;
+}
+
+.social ul {
+    margin: 10px auto;
+    margin-top: 25px;
+}
+
+.social ul img {
+    width: 24px;
+    height: 24px;
+}
+
+.social li {
+    display: inline-block;
 }
