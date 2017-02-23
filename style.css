@@ -3,32 +3,60 @@ Fonts
 --------------------------------*/
 
 @import url('https://fonts.googleapis.com/css?family=Lato|Oswald|PT+Sans|Titan+One');
+@import url('https://fonts.googleapis.com/css?family=Cardo|Pathway+Gothic+One|Sonsie+One');
 
 /*-------------------------------
 Header
 --------------------------------*/
-body {
-    background-color: #eaeaf0;
-    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b9b6bd' fill-opacity='0.32'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
 
 header {
     width: 100%;
     margin: 0 auto;
+    padding: 20px 20px;
+    background-image: url('other-img/vw-bus.jpg');
     text-align: center;
 }
 
-header ul {
-    margin: 0 auto;
+nav img {
+    float: left;
+    padding: 10px 30px;
+    width: 64px;
+    height: 64px;
 }
 
-header img {
+nav ul {
+    float: right;
+    padding: 10px 30px;
+}
+
+nav li {
+    display: inline-block;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+}
+
+nav:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+}
+
+header ul {
+    margin: 20px auto;
+}
+
+header ul img {
     width: 24px;
     height: 24px;
 }
 
 header li {
     display: inline-block;
+    font-family: 'Pathway Gothic One';
 }
 
 .line-break { 
@@ -45,12 +73,31 @@ Images
 --------------------------------*/
 
 h1 {
-    font-family: 'Titan One';
-    font-size: 45px;
+    font-family: 'Pathway Gothic One';
+    font-size: 60px;
+    color: white;
+    margin: 20px 20px;
+    line-height: 140%;
 }
 
 p {
-    font-family: "PT Sans";
+    font-family: "Cardo";
+    font-size: 20px;
+    margin: 20px 20px;
+    line-height: 140%;
+    color: white;
+}
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: darkgray;
 }
 
 main {
@@ -59,19 +106,53 @@ main {
     text-align: center;
 }
 
-main table {
+/*-------------------------------
+Tables
+--------------------------------*/
+
+table#shop {
     margin: 0 auto;
     border-spacing: 20px;
+    padding: 20px 20px;
 }
+
+table#market-results {
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+#market-results th {
+    padding: 15px 15px;
+    border-bottom: 1px solid black;
+    font-family: 'Pathway Gothic One';
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#market-results td {
+    padding: 5px 10px;
+    font-family: 'Cardo';
+}
+
+#market-results img {
+    width: 20px;
+    height: 20px;
+}
+
+/*-------------------------------
+Images
+--------------------------------*/
 
 img {
     width: 250px;
     height: 250px;
 }
 
+/*-------------------------------
+Chart
+--------------------------------*/
+
 .chart-div {
-    background-color: #eaeaf0;
-    background-image: none;
     width: 900px;
     height: 600px;
     margin: 0 auto;
