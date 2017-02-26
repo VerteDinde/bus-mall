@@ -2,10 +2,8 @@
 
 var allImages = []; //declare global
 
-function retrieveData() {
-  var retrievedImages = localStorage.getItem('storeImages');
-  allImages = JSON.parse(retrievedImages);
-  console.log(allImages);
+function retrieveData(retrieved) {
+  allImages = JSON.parse(retrieved);
 }
 
 // fucntion that returns the first letter of the name to upper case
@@ -16,7 +14,10 @@ function capFirstLetter(string) {
 
 // generate table for marketing-results
 function generateTable() {
-  retrieveData();
+  var retrievedImages = localStorage.getItem('storeImages');
+  if (retrievedImages) {  //prevents pushing an empty array into allImages on the initial session
+    retrieveData(retrieveImages);
+  };
   var tBody = document.getElementById('table-body');
 
   for (var i = 0; i < allImages.length; i++) {

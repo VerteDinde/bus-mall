@@ -124,7 +124,7 @@ table#shop {
 
 table#market-results {
     margin: 0 auto;
-    border: 1px solid black;
+    border-width: 1px solid black;
 }
 
 #market-results th {
