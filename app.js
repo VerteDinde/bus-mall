@@ -36,12 +36,10 @@ function clickHandler(event) {
 
     // generate new photos
     var clickedImage = event.target.getAttribute('src');
-    console.log('Just Clicked:', clickedImage);
     generateRandom();
     for (var i = 0; i < allImages.length; i++) {
       if (allImages[i].filepath == clickedImage) {
         allImages[i].timesClicked++;
-        console.log('Times Clicked: ', allImages[i].timesClicked);
       }
     }
     clickPercentage();
@@ -105,17 +103,14 @@ function generateRandom() {
     if (randArray[0] == allImages[i].imgNum) {
       tdOne.setAttribute('src', allImages[i].filepath);
       allImages[i].timesShown++;
-      console.log('Time Shown: ', allImages[i].timesShown);
     };
     if (randArray[1] == allImages[i].imgNum) {
       tdTwo.setAttribute('src', allImages[i].filepath);
       allImages[i].timesShown++;
-      console.log('Time Shown: ', allImages[i].timesShown);
     };
     if (randArray[2] == allImages[i].imgNum) {
       tdThree.setAttribute('src', allImages[i].filepath);
       allImages[i].timesShown++;
-      console.log('Time Shown: ', allImages[i].timesShown);
     }
   }
 };
@@ -133,16 +128,15 @@ function storeData() {
   localStorage.setItem('storeImages', storeImagesJSON);
 }
 
-function retrieveData() {
-  var retrievedImages = localStorage.getItem('storeImages');
-  allImages = JSON.parse(retrievedImages);
-  console.log(allImages);
+function retrieveData(retrieved) {
+  allImages = JSON.parse(retrieved);
 }
 // run all functions initially
 createAllImages();
 generateData();
-if (localStorage.length !== 0) {  //prevents pushing an empty array into allImages on the initial session
-  retrieveData();
+var retrievedImages = localStorage.getItem('storeImages');
+if (retrievedImages) {  //prevents pushing an empty array into allImages on the initial session
+  retrieveData(retrieveImages);
 }
 generateRandom();
 
