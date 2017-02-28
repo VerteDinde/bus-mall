@@ -49,7 +49,6 @@ function clickHandler(event) {
     alert('You have guessed 25 times.');
     // pushing data to local storage
     storeData();
-    retrieveData();
   }
 }
 
@@ -136,7 +135,7 @@ createAllImages();
 generateData();
 var retrievedImages = localStorage.getItem('storeImages');
 if (retrievedImages) {  //prevents pushing an empty array into allImages on the initial session
-  retrieveData(retrieveImages);
+  retrieveData(retrievedImages);
 }
 generateRandom();
 

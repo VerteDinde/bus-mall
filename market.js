@@ -16,7 +16,7 @@ function capFirstLetter(string) {
 function generateTable() {
   var retrievedImages = localStorage.getItem('storeImages');
   if (retrievedImages) {  //prevents pushing an empty array into allImages on the initial session
-    retrieveData(retrieveImages);
+    retrieveData(retrievedImages);
   };
   var tBody = document.getElementById('table-body');
 
